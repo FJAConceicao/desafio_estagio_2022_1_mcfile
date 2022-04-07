@@ -14,3 +14,8 @@ def print_repo_details(repository):
     print(f"Data da última atualização: {repository.updated_at}")
     
     print("-"*50 + "\n")
+
+# Conecta ao repositório
+token = "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"
+github = Github(password)
+
