@@ -23,3 +23,6 @@ github = Github(password)
 name_to_search = input("Entre com o nome do repositório para busca: ")
 repositories_found = github.search_repositories(name_to_search, sort="stars", order="desc")
 
+# Itera por cada repositório encontrado e mostra detalhes de cada um deles
+for repository in repositories_found:
+    print_repo_details(repository)
