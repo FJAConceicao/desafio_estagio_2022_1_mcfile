@@ -18,7 +18,7 @@ def print_repo_details(repository):
     print("-"*50 + "\n")
 
 # Conecta ao github por meio de token
-token = "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"
+token = "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"
 github = Github(token)
 
 # Captura termo de consulta e efetua busca
