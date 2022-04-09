@@ -16,13 +16,13 @@
     <tbody>
       {% for repo in repos %}
         <tr>
-          <td>{{ repo.full_name }}</td>
-          <td>{{ repo.description }}</td>
-          <td>{{ repo.owner }}</td>
+          <td>{{ repo.name_repo }}</td>
+          <td>{{ repo.descricao }}</td>
+          <td>{{ repo.autor }}</td>
           <td>{{ repo.language }}</td>
-          <td>{{ repo.stargazers_count }}</td>
-          <td>{{ repo.forks }}</td>
-          <td>{{ repo.updated_at }}</td>
+          <td>{{ repo.star_numbers }}</td>
+          <td>{{ repo.fork_numbers }}</td>
+          <td>{{ repo.date_last_update }}</td>
         </tr>
       {% endfor %}
     </tbody>

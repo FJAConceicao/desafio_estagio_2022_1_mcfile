@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Conecta ao github por meio de token
-token = "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"
+token = "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"
 github = Github(token)
 
 class Repository(db.Model):
@@ -25,22 +25,26 @@ class Repository(db.Model):
     fork_numbers = db.Column(db.Integer)
     date_last_update = db.Column(db.String(64))
 
-db.create_all()
-
-def search_add_repos_in_db(name_to_search="banho"):
+def search_add_repos_in_db(name_to_search="desafios de matematica"):
 
     repositories_found = github.search_repositories(name_to_search, sort="stars", order="desc")
 
     # Deletar BD
-    #if(os.path.exists("./db.sqlite")):
-    #    os.remove("./db.sqlite")
+    if(os.path.exists("./db.sqlite")):
+        os.remove("./db.sqlite")
+
+    # Criar BD novamente
+    db.create_all()
+
+    print(f"\nTermo para busca: {name_to_search}\n")
+    print("Armazenando no bd os repositórios encontrados ...\n")
 
     for repo in repositories_found:
 
-        text_desc = repo.description[:255] if(len(str(repo.description)) > 255) else repo.description
+        print(repo.full_name)
 
         repository = Repository(name_repo = repo.full_name,
-                                descricao = text_desc, 
+                                descricao = repo.description, 
                                 autor = repo.owner.name, 
                                 language = repo.language, 
                                 star_numbers = repo.stargazers_count, 
@@ -58,6 +62,7 @@ def index():
     search_add_repos_in_db()
     
     repositories = Repository.query
+    
     return render_template('basic_table.html', title='Busca repositórios no github', repos=repositories)
 
 if __name__ == '__main__':
