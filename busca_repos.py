@@ -27,6 +27,9 @@ class Repository(db.Model):
 
 def search_add_repos_in_db(name_to_search="desafios de matematica"):
 
+    print()
+
+    name_to_search = input("Entre com o nome para busca: ")
     repositories_found = github.search_repositories(name_to_search, sort="stars", order="desc")
 
     # Deletar BD
@@ -40,8 +43,6 @@ def search_add_repos_in_db(name_to_search="desafios de matematica"):
     print("Armazenando no bd os repositórios encontrados ...\n")
 
     for repo in repositories_found:
-
-        print(repo.full_name)
 
         repository = Repository(name_repo = repo.full_name,
                                 descricao = repo.description, 
@@ -65,6 +66,6 @@ def index():
     
     return render_template('basic_table.html', title='Busca repositórios no github', repos=repositories)
 
+
 if __name__ == '__main__':
-    app.debug = True
     app.run()
