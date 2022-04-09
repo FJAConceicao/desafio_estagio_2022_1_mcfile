@@ -33,14 +33,16 @@
   <script>
     $(document).ready(function () {
       $('#data').DataTable({
+        order: [[ 3, "desc" ]],
+
         columns: [
-          {orderable: false, searchable: false},
-          {orderable: false, searchable: false},
-          {orderable: false, searchable: false},
-          {orderable: false, searchable: false},
-          {orderable: false, searchable: false},
-          {orderable: false, searchable: false},
-          {orderable: false, searchable: false},
+          {searchable: false},
+          {searchable: false},
+          {searchable: false},
+          {searchable: false},
+          {searchable: false},
+          {searchable: false},
+          {searchable: false},
           ],
       });
     });
