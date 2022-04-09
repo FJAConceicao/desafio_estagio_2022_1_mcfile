@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Conecta ao github por meio de token
-token = "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"
+token = "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"
 github = Github(token)
 
 class Repository(db.Model):
