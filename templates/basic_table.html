@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Autor</th>
+        <th>Linguagem</th>
+        <th>Número de Stars</th>
+        <th>Número de Forks</th>
+        <th>Data da última atualização</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for repo in repos %}
+        <tr>
+          <td>{{ repo.full_name }}</td>
+          <td>{{ repo.description }}</td>
+          <td>{{ repo.owner }}</td>
+          <td>{{ repo.language }}</td>
+          <td>{{ repo.stargazers_count }}</td>
+          <td>{{ repo.forks }}</td>
+          <td>{{ repo.updated_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          null,
+          {searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          null],
+      });
+    });
+  </script>
+{% endblock %}
