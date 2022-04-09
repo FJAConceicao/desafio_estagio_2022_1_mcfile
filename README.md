@@ -15,7 +15,9 @@ python3 busca_repos.py
 
 Informe o termo para busca na barra de pesquisa de repositórios do Github.
 
-Acesse a página web para ver uma tabela página com os repositórios e as informações solicitadas.
+Acesse a página web para ver uma tabela página com os repositórios e as informações solicitadas como no exemplo abaixo:
+
+![Table Example](example.png)
 
 A página web fica no endereço: http://localhost:5000
 
